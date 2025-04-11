@@ -11,10 +11,10 @@ es:
         visible: Visible
         created_at: Creado el
         updated_at: Actualizado el
-  
+
   shared:
     return_to_home: Volver a la página principal
-  
+
   products:
     index:
       title: Productos más populares
