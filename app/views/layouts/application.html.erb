@@ -12,7 +12,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render partial: 'partials/navbar' %>
+
+    <main class="container px-4 mx-auto">
       <%= yield %>
     </main>
   </body>
