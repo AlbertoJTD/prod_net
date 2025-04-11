@@ -1,0 +1,18 @@
+es:
+  app_name: Prod Net
+  hello: Hola mundo
+  activerecord:
+    models:
+      product: Producto
+    attributes:
+      product:
+        name: Nombre
+        description: Descripción
+        visible: Visible
+        created_at: Creado el
+        updated_at: Actualizado el
+  
+  products:
+    index:
+      title: Productos más populares
+      see_more: Ver más productos

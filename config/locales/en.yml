@@ -28,4 +28,19 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  app_name: Prod Net
+  activerecord:
+    models:
+      product: Product
+    attributes:
+      product:
+        name: Name
+        description: Description
+        visible: Visible
+        created_at: Created at
+        updated_at: Updated at
+  
+  products:
+    index:
+      title: Most popular products 🦄
+      see_more: See more products
