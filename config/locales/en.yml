@@ -40,6 +40,20 @@ en:
         created_at: Created at
         updated_at: Updated at
   
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b"
+      long: "%B %d, %Y"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+  
+  shared:
+    return_to_home: Return to home
+  
   products:
     index:
       title: Most popular products 🦄

@@ -12,6 +12,20 @@ es:
         created_at: Creado el
         updated_at: Actualizado el
   
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d %b"
+      long: "%d de %B de %Y"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%d de %B de %Y %H:%M"
+  
+  shared:
+    return_to_home: Volver a la página principal
+  
   products:
     index:
       title: Productos más populares
