@@ -144,6 +144,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.5)
     msgpack (1.8.0)
@@ -287,6 +288,10 @@ GEM
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    view_component (3.21.0)
+      activesupport (>= 5.2.0, < 8.1)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -334,6 +339,7 @@ DEPENDENCIES
   tailwindcss-ruby (~> 4.1)
   turbo-rails
   tzinfo-data
+  view_component (~> 3.21)
   web-console
 
 RUBY VERSION
