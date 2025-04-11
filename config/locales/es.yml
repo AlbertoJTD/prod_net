@@ -15,7 +15,7 @@ es:
   date:
     formats:
       default: "%d/%m/%Y"
-      short: "%d %b"
+      short: "%d de %b"
       long: "%d de %B de %Y"
   datetime:
     formats:
