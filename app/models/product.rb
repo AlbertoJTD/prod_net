@@ -10,5 +10,6 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :description, presence: true
+  validates :name, length: { minimum: 3, maximum: 200 }
 end
