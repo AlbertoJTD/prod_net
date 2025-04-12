@@ -15,6 +15,9 @@ es:
   shared:
     return_to_home: Volver a la página principal
     cancel: Cancelar
+    links:
+      products: Productos
+      main_page: Página principal
 
   products:
     index:

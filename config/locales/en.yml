@@ -54,6 +54,9 @@ en:
   shared:
     return_to_home: Return to home
     cancel: Cancel
+    links:
+      products: Products
+      main_page: Main page
   
   products:
     index:
