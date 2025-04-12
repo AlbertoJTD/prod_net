@@ -1,5 +1,11 @@
 <%= form_with model: product, data: { controller: "form", form_submit_text_value: title } do |f| %>
   <%= render Shared::ModalComponent.new(title:) do |component| %>
+    <% if product.errors.any? %>
+      <%= component.with_errors_section do %>
+        <%= render Shared::ErrorListComponent.new(record: product) %>
+      <% end %>
+    <% end %>
+
     <%= component.with_body_section do %>
       <div class="px-10 py-5 space-y-5">
         <div>

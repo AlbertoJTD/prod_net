@@ -52,6 +52,8 @@ en:
       long: "%B %d, %Y %H:%M"
   
   shared:
+    errors:
+      form_errors: Some errors were found when saving the form
     return_to_home: Return to home
     cancel: Cancel
     links:

@@ -13,6 +13,8 @@ es:
         updated_at: Actualizado el
 
   shared:
+    errors:
+      form_errors: Se encontraron errores al guardar el formulario
     return_to_home: Volver a la página principal
     cancel: Cancelar
     links:
