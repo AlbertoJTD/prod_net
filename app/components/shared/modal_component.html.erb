@@ -22,6 +22,10 @@
             </div>
           <% end %>
 
+          <% if errors_section? %>
+            <%= errors_section %>
+          <% end %>
+
           <% if body_section? %>
             <%= body_section %>
           <% end %>
