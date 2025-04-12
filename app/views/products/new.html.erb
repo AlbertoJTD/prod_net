@@ -5,11 +5,11 @@
         <div class="w-full lg:w-2/3 px-4 mb-4 lg:mb-0">
           <div class="max-w-xl lg:pt-6">
             <div class="max-w-md mb-10">
-              <h2 class="text-3xl md:text-4xl font-semibold font-heading">Nuevo producto</h2>
+              <h2 class="text-3xl md:text-4xl font-semibold font-heading"><%= t('.new_product') %></h2>
             </div>
 
-            <%= turbo_frame_tag 'new_item' do %>
-              <%= render partial: 'form', locals: { product: @product } %>
+            <%= turbo_frame_tag 'modal' do %>
+              <%= render partial: 'form', locals: { product: @product, title: t('.new_product')} %>
             <% end %>
           </div>
         </div>

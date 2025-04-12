@@ -59,6 +59,8 @@ en:
       title: Most popular products 🦄
       see_more: See more products
       add_product: Add product
+    new:
+      new_product: New product
     create:
       success: Product was successfully created.
     update:
