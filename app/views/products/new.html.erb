@@ -8,7 +8,7 @@
               <h2 class="text-3xl md:text-4xl font-semibold font-heading">Nuevo producto</h2>
             </div>
 
-            <%= turbo_frame_tag 'modal' do %>
+            <%= turbo_frame_tag 'new_item' do %>
               <%= render partial: 'form', locals: { product: @product } %>
             <% end %>
           </div>

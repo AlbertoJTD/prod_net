@@ -59,3 +59,9 @@ en:
       title: Most popular products 🦄
       see_more: See more products
       add_product: Add product
+    create:
+      success: Product was successfully created.
+    update:
+      success: Product was successfully updated.
+    destroy:
+      success: Product was successfully deleted.

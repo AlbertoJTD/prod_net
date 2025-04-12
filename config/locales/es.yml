@@ -20,3 +20,9 @@ es:
       title: Productos más populares
       see_more: Ver más productos
       add_product: Crear producto
+    create:
+      success: Producto creado correctamente.
+    update:
+      success: Producto actualizado correctamente.
+    destroy:
+      success: Producto eliminado correctamente.
