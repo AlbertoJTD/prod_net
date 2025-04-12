@@ -64,6 +64,8 @@ group :development do
   # gem "spring"
 
   gem "annotate", "~> 3.2"
+  gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :test do
