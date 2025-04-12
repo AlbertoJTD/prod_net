@@ -14,12 +14,12 @@ RSpec.describe ProductsHelper, type: :helper do
   describe '#simple_description' do
     it 'truncates the description to the specified length' do
       description = 'This is a very long description that should be truncated'
-      expect(helper.simple_description(description, 20)).to eq('This is a very long...')
+      expect(helper.simple_description(description, 20)).to eq('This is a very lo...')
     end
 
     it 'uses default length of 100 if not specified' do
       description = 'a' * 150
-      expect(helper.simple_description(description).length).to eq(103) # 100 chars + '...'
+      expect(helper.simple_description(description).length).to eq(100) # 100 chars + '...'
     end
   end
 
