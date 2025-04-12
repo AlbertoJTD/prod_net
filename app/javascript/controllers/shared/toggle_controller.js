@@ -4,15 +4,19 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     setTimeout(() => {
+      this.element.classList.remove('opacity-0', 'translate-y-2');
+    }, 50)
+
+    setTimeout(() => {
       this.dismiss();
     }, 5000);
   }
 
   dismiss() {
-    this.element.remove();
-  }
+    this.element.classList.add('opacity-0', 'translate-y-2');
 
-  close() {
-    this.dismiss();
+    setTimeout(() => {
+      this.element.remove()
+    }, 300)
   }
 }

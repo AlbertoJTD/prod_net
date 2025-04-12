@@ -15,7 +15,10 @@
     <%= render partial: 'partials/navbar' %>
 
     <main class="container px-4 mx-auto">
-      <%= turbo_frame_tag 'flash' %>
+      <section>
+        <%= turbo_frame_tag 'flash' %>
+      </section>
+
       <%= yield %>
     </main>
 

@@ -1,9 +1,9 @@
-<div id="alert-1" data-controller="shared--toggle" class="flex items-center p-4 mb-4 rounded-lg <%= @background_color %>" role="alert">
+<div id="alert-1" data-controller="shared--toggle" class="flex items-center p-4 mb-4 rounded-lg <%= @background_color %> transform transition-all duration-300 ease-in-out opacity-0 translate-y-2" role="alert">
   <%= inline_svg_tag('icons/info_icon.svg', class: 'shrink-0 w-4 h-4') %>
   <div class="ms-3 text-sm font-medium">
     <%= @message %>
   </div>
-  <button data-action="shared--toggle#close" type="button" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:hover:bg-gray-700 <%= @icon_background_color %>" data-dismiss-target="#alert-1" aria-label="Close">
+  <button data-action="shared--toggle#dismiss" type="button" class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:hover:bg-gray-700 <%= @icon_background_color %>" data-dismiss-target="#alert-1" aria-label="Close">
     <span class="sr-only">Close</span>
     <%= inline_svg_tag('icons/x_mark.svg', class: 'w-3 h-3') %>
   </button>
