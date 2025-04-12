@@ -61,6 +61,7 @@ en:
       add_product: Add product
     new:
       new_product: New product
+      create_product: Create product
     create:
       success: Product was successfully created.
     update:
