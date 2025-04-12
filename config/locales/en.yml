@@ -53,6 +53,7 @@ en:
   
   shared:
     return_to_home: Return to home
+    cancel: Cancel
   
   products:
     index:

@@ -7,10 +7,7 @@
 
       <div class="lg:hidden">
         <button class="navbar-burger flex items-center p-3 hover:bg-gray-50 rounded">
-          <svg class="block h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <title>Mobile menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
+          <%= inline_svg_tag('icons/menu.svg', class: 'block h-4 w-4') %>
         </button>
       </div>
 
@@ -21,9 +18,7 @@
       <div class="hidden lg:flex">
         <input type="text" placeholder="e.g. Product" class="px-4 py-3 lg:inline-block text-sm leading-normal font-medium border border-r-0 border-gray-100 rounded-l">
         <button class="px-2 rounded-r border border-gray-100 border-l-0">
-          <svg class="text-gray-300 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
+          <%= inline_svg_tag('icons/magnifying_glass.svg', class: 'text-gray-300 w-4 h-4') %>
         </button>
       </div>
     </div>

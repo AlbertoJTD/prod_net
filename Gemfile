@@ -76,3 +76,5 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.2"
 
 gem "view_component", "~> 3.21"
+
+gem "inline_svg", "~> 1.10"
