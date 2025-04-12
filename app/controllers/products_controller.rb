@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
 
     if @product.save
       respond_to do |format|
-        format.html { redirect_to products_path, notice: t('.success') }
+        flash.now[:success] = t('.success')
+        format.html { redirect_to products_path }
         format.turbo_stream
       end
     else

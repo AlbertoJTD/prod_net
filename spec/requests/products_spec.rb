@@ -56,7 +56,7 @@ RSpec.describe "Products", type: :request do
 
       it 'sets a success notice' do
         post products_path, params: { product: valid_attributes }
-        expect(flash[:notice]).to eq(I18n.t('products.create.success'))
+        expect(flash[:success]).to eq(I18n.t('products.create.success'))
       end
 
       it 'responds with turbo stream format' do

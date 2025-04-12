@@ -1,4 +1,4 @@
-<%= form_with model: product, data: { controller: "form", form_submit_text_value: t('.create_product') } do |f| %>
+<%= form_with model: product, data: { controller: "form", form_submit_text_value: title } do |f| %>
   <%= render Shared::ModalComponent.new(title:) do |component| %>
     <%= component.with_body_section do %>
       <div class="px-10 py-5 space-y-5">
@@ -19,7 +19,7 @@
 
     <%= component.with_footer_section do %>
       <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-        <%= render Shared::Forms::SubmitComponent.new(submit_text: t('.create_product')) %>
+        <%= render Shared::Forms::SubmitComponent.new(submit_text: title) %>
         <%= render Shared::Forms::CancelComponent.new(button_name: t('shared.cancel')) %>
       </div>
     <% end %>

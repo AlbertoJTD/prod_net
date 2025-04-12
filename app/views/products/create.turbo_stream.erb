@@ -1,2 +1,4 @@
 <%= turbo_stream.prepend 'products', @product %>
 <%= turbo_stream.update 'modal', '' %>
+
+<%= render_turbo_stream_flash_messages %>

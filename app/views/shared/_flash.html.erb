@@ -1,0 +1,3 @@
+<% flash.each do |key, value| %>
+  <%= render Shared::AlertComponent.new(message: value, type: key) %>
+<% end %>
