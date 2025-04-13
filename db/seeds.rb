@@ -18,5 +18,12 @@ p 'Creating products...'
     visible: [true, false].sample
   )
 end
-
 p 'Products created'
+
+p 'Creating categories...'
+50.times do |_|
+  Category.create(
+    name: Faker::Commerce.department
+  )
+end
+p 'Categories created'
