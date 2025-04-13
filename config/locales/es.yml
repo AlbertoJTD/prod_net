@@ -20,6 +20,7 @@ es:
     links:
       products: Productos
       main_page: Página principal
+    see_details: Ver detalles
 
   products:
     shared:
