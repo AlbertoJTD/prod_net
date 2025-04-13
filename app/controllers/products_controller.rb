@@ -3,11 +3,11 @@ class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
-    @products = Product.all.where(visible: true).order(id: :desc)
+    @pagy, @products = pagy_countless(Product.all.where(visible: true).order(id: :desc), limit: 15)
   end
 
   def search
-    @products = Product.filter_by_name(params[:query])
+    @pagy, @products = pagy_countless(Product.filter_by_name(params[:query]), limit: 15)
 
     respond_to do |format|
       format.turbo_stream do
