@@ -1,22 +1,25 @@
-<%= form_with(model: category, class: "contents") do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+<%= form_with model: category, data: { controller: "form", form_submit_text_value: title } do |f| %>
+  <%= render Shared::ModalComponent.new(title:) do |component| %>
+    <% if category.errors.any? %>
+      <%= component.with_errors_section do %>
+        <%= render Shared::ErrorListComponent.new(record: category) %>
+      <% end %>
+    <% end %>
 
-      <ul class="list-disc ml-6">
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= component.with_body_section do %>
+      <div class="px-10 py-5 space-y-5">
+        <div>
+          <%= f.label :name, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', placeholder: t('activerecord.attributes.category.name') %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= component.with_footer_section do %>
+      <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+        <%= render Shared::Forms::SubmitComponent.new(submit_text: title) %>
+        <%= render Shared::Forms::CancelComponent.new(button_name: t('shared.cancel')) %>
+      </div>
+    <% end %>
   <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:name].none?, "border-red-400 focus:outline-red-600": category.errors[:name].any?}] %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>

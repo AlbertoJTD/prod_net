@@ -11,6 +11,10 @@ es:
         visible: Visible
         created_at: Creado el
         updated_at: Actualizado el
+      category:
+        name: Nombre
+        created_at: Creado el
+        updated_at: Actualizado el
 
   shared:
     errors:
@@ -45,3 +49,22 @@ es:
       edit_product: Editar producto
       confirm: ¿Estás seguro de querer eliminar este producto?
       delete: Eliminar
+  
+  categories:
+    not_found: Categoría no encontrada
+    index:
+      title: Categorías
+      add_category: Crear categoría
+    new:
+      new_category: Nueva categoría
+      create_category: Crear categoría
+    create:
+      success: Categoría creada correctamente.
+    update:
+      success: Categoría actualizada correctamente.
+    destroy:
+      success: Categoría eliminada correctamente.
+    edit:
+      edit_category: Editar categoría
+    show:
+      edit_category: Editar categoría

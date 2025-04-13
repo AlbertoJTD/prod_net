@@ -1,0 +1,12 @@
+<%= turbo_stream.prepend 'categories', @category %>
+<%= turbo_stream.update 'modal', '' %>
+
+<%= render_turbo_stream_flash_messages %>
+
+<% if Category.all.count == 1 %>
+  <%= turbo_stream.after :modal do %>
+    <script>
+      window.location.replace("<%= categories_path %>");
+    </script>
+  <% end %>
+<% end %>
