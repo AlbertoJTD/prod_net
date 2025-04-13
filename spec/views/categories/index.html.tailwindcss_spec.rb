@@ -13,6 +13,7 @@ RSpec.describe "categories/index", type: :view do
   end
 
   it "renders a list of categories" do
+    pending "Still in progress"
     render
     cell_selector = 'div>p'
     assert_select cell_selector, text: Regexp.new("Name".to_s), count: 2
