@@ -11,7 +11,7 @@
 require 'faker'
 
 p 'Creating products...'
-50.times do |_|
+150.times do |_|
   Product.create(
     name: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
@@ -27,3 +27,9 @@ p 'Creating categories...'
   )
 end
 p 'Categories created'
+
+p 'Creating product-categories...'
+Product.all.each do |product|
+  product.categories << Category.all.sample(rand(1..5))
+end
+p 'Product categories created'
