@@ -102,4 +102,20 @@ RSpec.describe "Products", type: :request do
       end
     end
   end
+
+  describe 'GET /edit' do
+    it 'returns http success' do
+      product = create(:product)
+
+      get edit_product_path(product)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns the product to @product' do
+      product = create(:product)
+
+      get edit_product_path(product)
+      expect(assigns(:product)).to eq(product)
+    end
+  end
 end
