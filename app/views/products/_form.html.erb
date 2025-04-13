@@ -24,6 +24,17 @@
           <%= f.label :visible, class: 'block text-sm font-medium text-gray-900 dark:text-white mr-3' %>
           <%= f.check_box :visible, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5' %>
         </div>
+
+        <div>
+          <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-2"><%= t('products.shared.categories_association') %></h2>
+          <div class="grid grid-cols-6 gap-2">
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+              <%= b.label(class: 'text-gray-900 dark:text-white') {
+                b.check_box(class: "border border-teal-500") + b.label(class: 'text-gray-900 dark:text-white ml-2') { b.text }
+              } %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
 

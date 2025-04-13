@@ -69,6 +69,7 @@ en:
   products:
     shared:
       not_found: Product not found
+      categories_association: Categories for this product
     index:
       title: Most popular products 🦄
       see_more: See more products

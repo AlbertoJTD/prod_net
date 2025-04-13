@@ -30,6 +30,7 @@ es:
   products:
     shared:
       not_found: Producto no encontrado
+      categories_association: Categorías para este producto
     index:
       title: Productos más populares
       see_more: Ver más productos
