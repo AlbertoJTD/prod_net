@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: %i[show edit update]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
@@ -23,8 +24,20 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-    @product = Product.find(params[:id])
+  def show; end
+
+  def edit; end
+
+  def update
+    if @product.update(product_params)
+      respond_to do |format|
+        flash.now[:success] = t('.success')
+        format.html { redirect_to products_path }
+        format.turbo_stream
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
@@ -40,6 +53,10 @@ class ProductsController < ApplicationController
         render_turbo_stream_flash_messages
       end
     end
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
   def product_params

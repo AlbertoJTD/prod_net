@@ -6,4 +6,12 @@
       </div>
     </div>
   <% end %>
+
+  <%= component.with_footer_section do %>
+    <%= component.with_footer_section do %>
+      <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+        <%= link_to t('.edit_product'), edit_product_path(@product), class: 'bg-blue-500 text-white px-4 py-2 rounded-md' %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

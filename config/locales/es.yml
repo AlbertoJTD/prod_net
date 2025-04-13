@@ -37,3 +37,7 @@ es:
       success: Producto actualizado correctamente.
     destroy:
       success: Producto eliminado correctamente.
+    edit:
+      edit_product: Editar producto
+    show:
+      edit_product: Editar producto
