@@ -16,6 +16,14 @@
 
     <main class="container px-4 mx-auto">
       <section>
+        <% if notice %>
+          <%= render Shared::AlertComponent.new(message: notice, type: 'success') %>
+        <% end %>
+
+        <% if alert %>
+          <%= render Shared::AlertComponent.new(message: alert, type: 'error') %>
+        <% end %>
+
         <%= turbo_frame_tag 'flash' %>
       </section>
 

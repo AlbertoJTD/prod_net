@@ -1,0 +1,9 @@
+<%= render Shared::ModalComponent.new(title: @product.name) do |component| %>
+  <%= component.with_body_section do %>
+    <div class="px-10 py-5 space-y-5 text-black dark:text-white">
+      <div>
+        <%= @product.description %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

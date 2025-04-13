@@ -61,10 +61,13 @@ en:
       main_page: Main page
   
   products:
+    shared:
+      not_found: Product not found
     index:
       title: Most popular products 🦄
       see_more: See more products
       add_product: Add product
+      see_details: See details
     new:
       new_product: New product
       create_product: Create product

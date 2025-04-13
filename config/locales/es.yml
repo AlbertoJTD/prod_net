@@ -22,6 +22,8 @@ es:
       main_page: Página principal
 
   products:
+    shared:
+      not_found: Producto no encontrado
     index:
       title: Productos más populares
       see_more: Ver más productos

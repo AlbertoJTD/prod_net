@@ -8,5 +8,7 @@
     <span class="inline-block mb-4 text-xs text-gray-500"><%= date_format(@product.created_at.to_date, format: :long) %></span>
     <h2 class="mb-4 text-2xl font-semibold font-heading"><%= @product.name %></h2>
     <p class="mb-4 text-gray-500 leading-relaxed"><%= simple_description(@product.description) %></p>
+
+    <%= link_to t('.see_details'), product_path(@product), class: 'text-sm font-medium text-red-500 underline hover:no-underline', data: { turbo_frame: 'modal' } %>
   </div>
 </div>
