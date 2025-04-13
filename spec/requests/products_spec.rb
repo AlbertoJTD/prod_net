@@ -79,4 +79,27 @@ RSpec.describe "Products", type: :request do
       end
     end
   end
+
+  describe 'GET /show' do
+    it 'returns http success' do
+      product = create(:product)
+
+      get product_path(product)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns the product to @product' do
+      product = create(:product)
+
+      get product_path(product)
+      expect(assigns(:product)).to eq(product)
+    end
+
+    context 'when the product is not found' do
+      it 'redirects to the products list' do
+        get product_path(999)
+        expect(response).to redirect_to(products_path)
+      end
+    end
+  end
 end
