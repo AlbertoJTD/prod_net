@@ -10,5 +10,18 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:category) { FactoryBot.build(:category) }
+
+  context 'should be valid' do
+    it 'with name present' do
+      expect(category).to be_valid
+    end
+  end
+
+  context 'should not be valid' do
+    it 'without name' do
+      category.name = nil
+      expect(category).to_not be_valid
+    end
+  end
 end
