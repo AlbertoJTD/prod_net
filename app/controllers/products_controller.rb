@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where('name ILIKE ?', "%#{params[:query]}%")
+    @products = Product.filter_by_name(params[:query])
 
     respond_to do |format|
       format.turbo_stream do

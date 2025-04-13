@@ -16,4 +16,6 @@ class Product < ApplicationRecord
 
   validates :name, :description, presence: true
   validates :name, length: { minimum: 3, maximum: 200 }
+
+  scope :filter_by_name, ->(query) { where('name ILIKE ?', "%#{query}%") }
 end
