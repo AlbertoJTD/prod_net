@@ -118,4 +118,60 @@ RSpec.describe "Products", type: :request do
       expect(assigns(:product)).to eq(product)
     end
   end
+
+  describe 'PATCH /update' do
+    let(:product) { create(:product) }
+
+    context 'with valid parameters' do
+      it 'updates the Product attributes' do
+        patch product_path(product), params: { product: valid_attributes }
+        product.reload
+        expect(product.name).to eq(valid_attributes[:name])
+        expect(product.description).to eq(valid_attributes[:description])
+        expect(product.visible).to eq(valid_attributes[:visible])
+      end
+
+      it 'redirects to the products list with HTML format' do
+        patch product_path(product), params: { product: valid_attributes }
+        expect(response).to redirect_to(products_path)
+      end
+
+      it 'sets a success notice' do
+        patch product_path(product), params: { product: valid_attributes }
+        expect(flash[:success]).to eq(I18n.t('products.update.success'))
+      end
+
+      it 'responds with turbo stream format' do
+        put product_path(product), params: { product: valid_attributes }, as: :turbo_stream
+        expect(response.media_type).to eq Mime[:turbo_stream]
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not update the Product' do
+        original_name = product.name
+        patch product_path(product), params: { product: { name: '' } }
+        product.reload
+        expect(product.name).to eq(original_name)
+      end
+
+      it 'renders the edit template with unprocessable_entity status' do
+        patch product_path(product), params: { product: { name: '' } }
+        expect(response).to render_template(:edit)
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+
+    context 'when the product is not found' do
+      it 'redirects to the products list' do
+        patch product_path(999), params: { product: valid_attributes }
+        expect(response).to redirect_to(products_path)
+      end
+
+      it 'sets an error alert' do
+        patch product_path(999), params: { product: valid_attributes }
+        expect(flash[:alert]).to eq(I18n.t('products.shared.not_found'))
+      end
+    end
+  end
 end
