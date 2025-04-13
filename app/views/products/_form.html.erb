@@ -16,6 +16,10 @@
           <%= f.label :description, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
           <%= f.text_area :description, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', placeholder: t('activerecord.attributes.product.description') %>
         </div>
+        <div>
+          <%= f.label :image, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.file_field :image, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+        </div>
         <div class="flex items-center justify-start">
           <%= f.label :visible, class: 'block text-sm font-medium text-gray-900 dark:text-white mr-3' %>
           <%= f.check_box :visible, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5' %>
