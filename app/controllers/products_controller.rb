@@ -6,6 +6,16 @@ class ProductsController < ApplicationController
     @products = Product.all.where(visible: true).order(id: :desc)
   end
 
+  def search
+    @products = Product.where('name ILIKE ?', "%#{params[:query]}%")
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update('products', partial: 'products/search', locals: { products: @products })
+      end
+    end
+  end
+
   def new
     @product = Product.new
   end

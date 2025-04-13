@@ -21,6 +21,7 @@ es:
       products: Productos
       main_page: Página principal
     see_details: Ver detalles
+    search: Buscar
 
   products:
     shared:

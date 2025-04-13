@@ -17,10 +17,13 @@
       </ul>
 
       <div class="hidden lg:flex">
-        <input type="text" placeholder="e.g. Product" class="px-4 py-3 lg:inline-block text-sm leading-normal font-medium border border-r-0 border-gray-100 rounded-l">
-        <button class="px-2 rounded-r border border-gray-100 border-l-0">
-          <%= inline_svg_tag('icons/magnifier.svg', class: 'text-gray-300 w-4 h-4') %>
-        </button>
+        <%= form_with url: search_products_path, method: :get, data: { turbo: true, turbo_stream: true } do |f| %>
+          <%= f.text_field :query, placeholder: t('shared.search'), class: 'px-4 py-3 lg:inline-block text-sm leading-normal font-medium border border-r-0 border-gray-100 rounded-l', oninput: 'this.form.requestSubmit()' %>
+
+          <button type="submit" class="px-2 rounded-r border border-gray-100 border-l-0">
+            <%= inline_svg_tag('icons/magnifier.svg', class: 'text-gray-300 w-4 h-4') %>
+          </button>
+        <% end %>
       </div>
     </div>
   </nav>
