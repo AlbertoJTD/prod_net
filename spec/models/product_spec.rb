@@ -15,6 +15,11 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   let(:product) { FactoryBot.build(:product) }
 
+  describe 'associations' do
+    it { should have_many(:product_categories).dependent(:destroy) }
+    it { should have_many(:categories).through(:product_categories) }
+  end
+
   describe 'new object' do
     it 'starts as visible' do
       expect(product.visible).to be_truthy

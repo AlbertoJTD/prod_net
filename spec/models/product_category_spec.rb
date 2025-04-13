@@ -11,5 +11,18 @@
 require 'rails_helper'
 
 RSpec.describe ProductCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:product_category) { FactoryBot.build(:product_category) }
+  let(:product) { FactoryBot.build(:product) }
+  let(:category) { FactoryBot.build(:category) }
+
+  context 'associations' do
+    it { should belong_to(:product) }
+    it { should belong_to(:category) }
+  end
+
+  context 'should be valid' do
+    it 'with product and category' do
+      expect(product_category).to be_valid
+    end
+  end
 end
