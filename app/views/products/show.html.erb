@@ -4,6 +4,10 @@
       <div>
         <%= @product.description %>
       </div>
+
+      <div>
+        <%= image_tag @product.image, class: 'w-full h-full object-cover rounded-lg' if @product.image.attached? %>
+      </div>
     </div>
   <% end %>
 
