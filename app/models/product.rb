@@ -14,6 +14,8 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  has_one_attached :image, dependent: :destroy
+
   validates :name, :description, presence: true
   validates :name, length: { minimum: 3, maximum: 200 }
 
