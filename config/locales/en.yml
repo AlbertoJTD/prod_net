@@ -81,3 +81,5 @@ en:
       edit_product: Edit product
     show:
       edit_product: Edit product
+      confirm: Are you sure you want to delete this product?
+      delete: Delete

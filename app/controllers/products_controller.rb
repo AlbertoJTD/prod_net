@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update]
+  before_action :set_product, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
@@ -37,6 +37,16 @@ class ProductsController < ApplicationController
       end
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @product.destroy
+
+    respond_to do |format|
+      flash.now[:success] = t('.success')
+      format.html { redirect_to products_path }
+      format.turbo_stream
     end
   end
 

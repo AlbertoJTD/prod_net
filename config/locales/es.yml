@@ -41,3 +41,5 @@ es:
       edit_product: Editar producto
     show:
       edit_product: Editar producto
+      confirm: ¿Estás seguro de querer eliminar este producto?
+      delete: Eliminar
