@@ -11,4 +11,6 @@
 #
 class Comment < ApplicationRecord
   belongs_to :comentable, polymorphic: true
+
+  validates :message, presence: true
 end
