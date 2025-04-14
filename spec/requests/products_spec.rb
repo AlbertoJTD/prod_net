@@ -190,4 +190,17 @@ RSpec.describe "Products", type: :request do
       }.to change(Product, :count).by(-1)
     end
   end
+
+  describe 'GET /products/search' do
+    it 'returns http success' do
+      get '/products/search', params: { query: 'test' }, as: :turbo_stream
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns the products to @products' do
+      product = create(:product)
+      get '/products/search', params: { query: product.name }, as: :turbo_stream
+      expect(assigns(:products)).to include(product)
+    end
+  end
 end
