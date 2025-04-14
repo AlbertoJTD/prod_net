@@ -65,6 +65,10 @@ en:
       categories: Categories
     see_details: See details
     search: Search
+    comments:
+      title: Comments
+      create: Create comment
+      no_comments: No comments yet
   
   products:
     shared:

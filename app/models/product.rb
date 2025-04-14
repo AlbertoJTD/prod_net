@@ -17,12 +17,13 @@ class Product < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
-  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :comments, as: :comentable, dependent: :destroy
 
   validates :name, :description, presence: true
   validates :name, length: { minimum: 3, maximum: 200 }
 
   accepts_nested_attributes_for :categories
+  accepts_nested_attributes_for :comments
 
   scope :filter_by_name, ->(query) { where('name ILIKE ?', "%#{query}%") }
 end

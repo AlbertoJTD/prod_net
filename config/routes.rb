@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   root "products#index"
 
   resources :products do
-    get :search, on: :collection
+    collection do
+      get :search
+    end
+    member do
+      post :comments
+    end
   end
   resources :categories
 end

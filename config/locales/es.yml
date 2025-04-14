@@ -26,6 +26,10 @@ es:
       categories: Categorías
     see_details: Ver detalles
     search: Buscar
+    comments:
+      title: Comentarios
+      create: Crear comentario
+      no_comments: No hay comentarios aún
 
   products:
     shared:

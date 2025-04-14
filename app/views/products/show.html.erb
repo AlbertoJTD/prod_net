@@ -1,4 +1,4 @@
-<%= render Shared::ModalComponent.new(title: @product.name) do |component| %>
+<%= render Shared::ModalComponent.new(title: @product.name, data_modal: { controller: 'shared--modal', shared__modal_target: 'modal' }) do |component| %>
   <%= component.with_body_section do %>
     <div class="px-10 py-5 text-black dark:text-white">
       <% if @product.categories.any? %>
@@ -19,6 +19,22 @@
       <div>
         <%= image_tag @product.image, class: 'w-full h-full object-cover rounded-lg' if @product.image.attached? %>
       </div>
+
+      <div class="text-lg font-medium text-gray-900 dark:text-white mb-4"><%= t('shared.comments.title') %></div>
+      <%= turbo_frame_tag 'comments' do %>
+        <% if @product.comments.any? %>
+          <% @product.comments.each do |comment| %>
+            <%= render Comments::ItemComponent.new(comment: comment) %>
+          <% end %>
+        <% else %>
+          <%= t('shared.comments.no_comments') %>
+        <% end %>
+      <% end %>
+      
+      <%= form_with model: @product.comments.new, url: comments_product_path(@product), turbo_frame: 'comments' do |f| %>
+        <%= f.text_area :message, class: 'w-full p-2 border border-gray-300 rounded-md' %>
+        <%= f.submit t('shared.comments.create'), class: 'bg-blue-500 text-white px-4 py-2 rounded-md' %>
+      <% end %>
     </div>
   <% end %>
 
