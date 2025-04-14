@@ -1,9 +1,6 @@
 <%= turbo_frame_tag 'modal' do %>
   <%= content_tag(:div, class: 'fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 max-h-full hidden',
-                        data: {
-                          controller: 'shared--modal',
-                          shared__modal_target: 'modal',
-                          action: "turbo:frame-load->shared--modal#open turbo:submit-end->shared--modal#hideModal" }) do %>
+                        data: {}.merge(@data_modal)) do %>
     <div id="extralarge-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 max-h-full">
       <div class="bg-gray-900 opacity-0 absolute top-0 left-0 right-0 bottom-0 h-screen w-screen pb-10 transition-opacity duration-300 ease-in-out"></div>
       <div class="relative w-full max-w-7xl max-h-full mx-auto my-auto flex items-center justify-center transform transition-all duration-300 ease-in-out scale-95">
