@@ -33,3 +33,13 @@ Product.all.each do |product|
   product.categories << Category.all.sample(rand(1..5))
 end
 p 'Product categories created'
+
+p 'Creating comments...'
+Product.find_each do |product|
+  rand(1..10).times do
+    product.comments.create(
+      message: Faker::Lorem.paragraph
+    )
+  end
+end
+p 'Comments created'
