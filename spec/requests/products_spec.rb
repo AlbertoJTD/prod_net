@@ -203,4 +203,24 @@ RSpec.describe "Products", type: :request do
       expect(assigns(:products)).to include(product)
     end
   end
+
+  describe 'POST /products/comments' do
+    let(:product) { create(:product) }
+
+    it 'returns http success' do
+      post comments_product_path(product), params: { comment: { message: 'test' } }, as: :turbo_stream
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'assigns the comment to @comment' do
+      post comments_product_path(product), params: { comment: { message: 'test' } }
+      expect(assigns(:comment)).to be_a(Comment)
+    end
+
+    it 'creates a new Comment' do
+      expect {
+        post comments_product_path(product), params: { comment: { message: 'test' } }
+      }.to change(Comment, :count).by(1)
+    end
+  end
 end
