@@ -222,5 +222,10 @@ RSpec.describe "Products", type: :request do
         post comments_product_path(product), params: { comment: { message: 'test' } }
       }.to change(Comment, :count).by(1)
     end
+
+    it 'respond with unprocessable_entity status' do
+      post comments_product_path(product), params: { comment: { message: '' } }
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
   end
 end
