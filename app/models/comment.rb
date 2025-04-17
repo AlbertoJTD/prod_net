@@ -10,8 +10,9 @@
 #  updated_at      :datetime         not null
 #
 class Comment < ApplicationRecord
+  include Votable
+
   belongs_to :comentable, polymorphic: true
-  has_many :votes, as: :votable, dependent: :destroy
 
   validates :message, presence: true
 end
