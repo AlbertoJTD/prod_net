@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   has_many :product_categories, dependent: :destroy
   has_many :categories, through: :product_categories
   has_many :comments, as: :comentable, dependent: :destroy
+  has_many :votes, as: :votable, dependent: :destroy
 
   validates :name, :description, presence: true
   validates :name, length: { minimum: 3, maximum: 200 }
