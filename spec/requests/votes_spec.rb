@@ -19,7 +19,16 @@ RSpec.describe "Votes", type: :request do
     end
 
     context 'when votable is a Comment' do
-      pending 'WIP'
+      it 'assigns the votable to @votable' do
+        post product_comment_votes_path(product, comment), params: { votable_id: comment.id, votable_type: comment.class.name }
+        expect(assigns(:votable)).to eq(comment)
+      end
+
+      it 'creates a new vote' do
+        expect {
+          post product_comment_votes_path(product, comment), params: { votable_id: comment.id, votable_type: comment.class.name }
+        }.to change(Vote, :count).by(1)
+      end
     end
   end
 end
