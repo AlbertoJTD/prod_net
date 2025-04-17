@@ -11,7 +11,7 @@
 #
 FactoryBot.define do
   factory :comment do
-    message { "MyText" }
-    comentable { nil }
+    message { Faker::Lorem.paragraph }
+    comentable { create(:product) }
   end
 end

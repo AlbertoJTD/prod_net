@@ -75,3 +75,11 @@ es:
       edit_category: Editar categoría
       delete: Eliminar
       read_more: Leer más
+  
+  comments:
+    not_found: Comentario no encontrado
+    edit:
+      edit_comment: Editar comentario
+      delete: Eliminar
+    update:
+      success: Comentario actualizado correctamente.

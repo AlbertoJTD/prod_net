@@ -115,3 +115,11 @@ en:
       edit_category: Edit category
       delete: Delete
       read_more: Read more
+  
+  comments:
+    not_found: Comment not found
+    edit:
+      edit_comment: Edit comment
+      delete: Delete
+    update:
+      success: Comment was successfully updated.

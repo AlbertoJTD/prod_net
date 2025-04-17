@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     end
   end
   resources :categories
+  resources :comments, only: %i[edit update destroy]
 end

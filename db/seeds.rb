@@ -36,7 +36,7 @@ p 'Product categories created'
 
 p 'Creating comments...'
 Product.find_each do |product|
-  rand(1..10).times do
+  rand(1..5).times do
     product.comments.create(
       message: Faker::Lorem.paragraph
     )
