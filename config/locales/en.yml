@@ -69,6 +69,7 @@ en:
       title: Comments
       create: Create comment
       no_comments: No comments yet
+    votes_count: "Votes: %{count}"
   
   products:
     shared:

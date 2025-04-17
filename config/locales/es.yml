@@ -30,6 +30,7 @@ es:
       title: Comentarios
       create: Crear comentario
       no_comments: No hay comentarios aún
+    votes_count: "Votos: %{count}"
 
   products:
     shared:
