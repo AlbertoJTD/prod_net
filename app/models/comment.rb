@@ -15,4 +15,9 @@ class Comment < ApplicationRecord
   belongs_to :comentable, polymorphic: true
 
   validates :message, presence: true
+
+  scope :sort_by_votes, -> {
+    joins('LEFT JOIN votes ON votes.votable_id = comments.id AND votes.votable_type = \'Comment\'')
+      .group(:id).order('COUNT(votes.id) DESC')
+  }
 end
