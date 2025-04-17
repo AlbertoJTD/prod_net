@@ -5,6 +5,8 @@ class VotesController < ApplicationController
     @vote = @votable.votes.new
     @vote.save
 
+    @identifier_name = "#{identifier_name}_#{@votable.id}_votes_count"
+
     respond_to do |format|
       format.html { redirect_to @votable }
       format.turbo_stream
@@ -32,5 +34,9 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:votable_id, :votable_type)
+  end
+
+  def identifier_name
+    @votable.class.name.underscore
   end
 end

@@ -60,7 +60,7 @@
             <%= render Votes::ButtonComponent.new(votable: @product, url: product_votes_path(@product)) %>
           </div>
 
-          <%= turbo_frame_tag 'votes_count' do %>
+          <%= turbo_frame_tag "product_#{@product.id}_votes_count" do %>
             <%= t('shared.votes_count', count: @product.votes.count) %>
           <% end %>
         </section>

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       get :search
     end
 
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy] do
+      resources :votes, only: %i[create]
+    end
     resources :votes, only: %i[create]
   end
   resources :categories
