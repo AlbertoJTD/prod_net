@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     member do
       post :comments
     end
+
+    resources :votes, only: %i[create]
   end
   resources :categories
   resources :comments, only: %i[edit update destroy]

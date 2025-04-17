@@ -20,6 +20,16 @@
         <%= image_tag @product.image, class: 'w-full h-full object-cover rounded-lg' if @product.image.attached? %>
       </div>
 
+      <section>
+        <div>
+          <%= render Votes::ButtonComponent.new(votable: @product, url: product_votes_path(@product)) %>
+        </div>
+        
+        <%= turbo_frame_tag 'votes_count' do %>
+          <%= t('shared.votes_count', count: @product.votes.count) %>
+        <% end %>
+      </section>
+
       <div class="text-lg font-medium text-gray-900 dark:text-white mb-4"><%= t('shared.comments.title') %></div>
       <%= turbo_frame_tag 'comments' do %>
         <% if @product.comments.any? %>
