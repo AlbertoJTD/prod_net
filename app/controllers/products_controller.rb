@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
-    @pagy, @products = pagy_countless(Product.all.where(visible: true).order(id: :desc), limit: 15)
+    @pagy, @products = pagy_countless(Product.popular.visible, limit: 15)
   end
 
   def search
