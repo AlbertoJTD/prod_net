@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       flash.now[:success] = t('.success')
-      format.html { redirect_to products_path }
+      format.html { redirect_to redirect_path_for(@comentable), notice: t('.success') }
       format.turbo_stream
     end
   end
@@ -34,5 +34,16 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
+  end
+
+  def redirect_path_for(comentable)
+    case comentable
+    when Product
+      product_path(@comentable)
+    when Category
+      category_path(@comentable)
+    else
+      root_path
+    end
   end
 end

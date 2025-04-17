@@ -123,3 +123,5 @@ en:
       delete: Delete
     update:
       success: Comment was successfully updated.
+    destroy:
+      success: Comment was successfully deleted.

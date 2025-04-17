@@ -83,3 +83,5 @@ es:
       delete: Eliminar
     update:
       success: Comentario actualizado correctamente.
+    destroy:
+      success: Comentario eliminado correctamente.
