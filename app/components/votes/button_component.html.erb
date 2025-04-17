@@ -1,0 +1,6 @@
+<%= button_to @url, data: { turbo_method: :post } do %>
+  <%= hidden_field_tag :votable_id, @votable.id %>
+  <%= hidden_field_tag :votable_type, @votable.class.name %>
+
+  <%= image_tag 'icons/like.svg', class: 'w-6 h-6' %>
+<% end %>
