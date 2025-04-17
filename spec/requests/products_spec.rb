@@ -206,26 +206,33 @@ RSpec.describe "Products", type: :request do
 
   describe 'POST /products/comments' do
     let(:product) { create(:product) }
+    let(:valid_comment_params) { { comment: { message: 'Test comment' } } }
+    let(:invalid_comment_params) { { comment: { message: '' } } }
 
-    it 'returns http success' do
-      post comments_product_path(product), params: { comment: { message: 'test' } }, as: :turbo_stream
-      expect(response).to have_http_status(:success)
+    context 'with valid parameters' do
+      it 'creates a new comment' do
+        expect {
+          post comments_product_path(product), params: valid_comment_params
+        }.to change(Comment, :count).by(1)
+      end
+
+      it 'redirects to the product' do
+        post comments_product_path(product), params: valid_comment_params
+        expect(response).to redirect_to(product_path(product))
+      end
     end
 
-    it 'assigns the comment to @comment' do
-      post comments_product_path(product), params: { comment: { message: 'test' } }
-      expect(assigns(:comment)).to be_a(Comment)
-    end
+    context 'with invalid parameters' do
+      it 'responds with unprocessable_entity status' do
+        post comments_product_path(product), params: invalid_comment_params
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
 
-    it 'creates a new Comment' do
-      expect {
-        post comments_product_path(product), params: { comment: { message: 'test' } }
-      }.to change(Comment, :count).by(1)
-    end
-
-    it 'respond with unprocessable_entity status' do
-      post comments_product_path(product), params: { comment: { message: '' } }
-      expect(response).to have_http_status(:unprocessable_entity)
+      it 'does not create a new comment' do
+        expect {
+          post comments_product_path(product), params: invalid_comment_params
+        }.not_to change(Comment, :count)
+      end
     end
   end
 end
