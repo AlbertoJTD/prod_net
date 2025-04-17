@@ -78,6 +78,7 @@ es:
   
   comments:
     not_found: Comentario no encontrado
+    delete_confirmation: ¿Estás seguro de querer eliminar este comentario?
     edit:
       edit_comment: Editar comentario
       delete: Eliminar
