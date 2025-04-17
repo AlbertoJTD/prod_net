@@ -1,1 +1,1 @@
-<%= turbo_stream.replace('votes_count', partial: 'votes/count', locals: { votable: @votable }) %>
+<%= turbo_stream.update('votes_count', partial: 'votes/count', locals: { votable: @votable }) %>
