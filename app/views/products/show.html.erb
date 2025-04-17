@@ -20,16 +20,6 @@
         <%= image_tag @product.image, class: 'w-full h-full object-cover rounded-lg' if @product.image.attached? %>
       </div>
 
-      <section>
-        <div>
-          <%= render Votes::ButtonComponent.new(votable: @product, url: product_votes_path(@product)) %>
-        </div>
-        
-        <%= turbo_frame_tag 'votes_count' do %>
-          <%= t('shared.votes_count', count: @product.votes.count) %>
-        <% end %>
-      </section>
-
       <div class="text-lg font-medium text-gray-900 dark:text-white mb-4"><%= t('shared.comments.title') %></div>
       <%= turbo_frame_tag 'comments' do %>
         <% if @product.comments.any? %>
@@ -50,15 +40,27 @@
 
   <%= component.with_footer_section do %>
     <%= component.with_footer_section do %>
-      <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
-        <%= link_to t('.edit_product'), edit_product_path(@product), class: 'bg-blue-500 text-white px-4 py-2 rounded-md' %>
-        <%= link_to t('.delete'), product_path(@product), 
-            class: 'bg-red-500 text-white px-4 py-2 rounded-md', 
-            data: { 
-              turbo_method: :delete, 
-              turbo_confirm: t('.confirm'),
-              action: 'click->shared--modal#hideModal'
-            } %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center p-4 md:p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b dark:border-gray-600">
+          <%= link_to t('.edit_product'), edit_product_path(@product), class: 'bg-blue-500 text-white px-4 py-2 rounded-md' %>
+          <%= link_to t('.delete'), product_path(@product), 
+              class: 'bg-red-500 text-white px-4 py-2 rounded-md', 
+              data: { 
+                turbo_method: :delete, 
+                turbo_confirm: t('.confirm'),
+                action: 'click->shared--modal#hideModal'
+              } %>
+        </div>
+
+        <section class="flex items-center gap-4 my-6 text-white pr-5">
+          <div class="flex-shrink-0">
+            <%= render Votes::ButtonComponent.new(votable: @product, url: product_votes_path(@product)) %>
+          </div>
+
+          <%= turbo_frame_tag 'votes_count' do %>
+            <%= t('shared.votes_count', count: @product.votes.count) %>
+          <% end %>
+        </section>
       </div>
     <% end %>
   <% end %>
