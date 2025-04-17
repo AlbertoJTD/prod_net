@@ -9,11 +9,7 @@
 #  updated_at   :datetime         not null
 #
 FactoryBot.define do
-  factory :product_vote do
-    votable { create(:product) }
-  end
-
-  factory :comment_vote do
-    votable { create(:comment) }
+  factory :vote do
+    association :votable
   end
 end

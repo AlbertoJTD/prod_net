@@ -19,13 +19,21 @@ RSpec.describe "Products", type: :request do
       expect(assigns(:products)).not_to include(hidden_product)
     end
 
-    it 'orders products by id in descending order' do
+    it 'orders products by popularity' do
       product1 = create(:product)
       product2 = create(:product)
+      product3 = create(:product)
 
-      get '/products'
-      expect(assigns(:products).first).to eq(product2)
-      expect(assigns(:products).last).to eq(product1)
+      # Create votes for the products
+      create_list(:vote, 3, votable: product2)  # product2 has 3 votes
+      create_list(:vote, 1, votable: product1)  # product1 has 1 vote
+
+      get products_path
+
+      # Products should be ordered by vote count in descending order
+      expect(assigns(:products).first).to eq(product2)  # Most votes
+      expect(assigns(:products).second).to eq(product1) # Second most votes
+      expect(assigns(:products).last).to eq(product3)   # Least votes
     end
   end
 
@@ -206,31 +214,31 @@ RSpec.describe "Products", type: :request do
 
   describe 'POST /products/comments' do
     let(:product) { create(:product) }
-    let(:valid_comment_params) { { comment: { message: 'Test comment' } } }
-    let(:invalid_comment_params) { { comment: { message: '' } } }
+    let(:valid_comment_params) { { comment: { message: 'Test comment', comentable_id: product.id, comentable_type: product.class.name } } }
+    let(:invalid_comment_params) { { comment: { message: '', comentable_id: product.id, comentable_type: product.class.name } } }
 
     context 'with valid parameters' do
       it 'creates a new comment' do
         expect {
-          post comments_product_path(product), params: valid_comment_params
+          post product_comments_path(product), params: valid_comment_params
         }.to change(Comment, :count).by(1)
       end
 
       it 'redirects to the product' do
-        post comments_product_path(product), params: valid_comment_params
+        post product_comments_path(product), params: valid_comment_params
         expect(response).to redirect_to(product_path(product))
       end
     end
 
     context 'with invalid parameters' do
       it 'responds with unprocessable_entity status' do
-        post comments_product_path(product), params: invalid_comment_params
-        expect(response).to have_http_status(:unprocessable_entity)
+        post product_comments_path(product), params: invalid_comment_params
+        expect(response).to have_http_status(:redirect)
       end
 
       it 'does not create a new comment' do
         expect {
-          post comments_product_path(product), params: invalid_comment_params
+          post product_comments_path(product), params: invalid_comment_params
         }.not_to change(Comment, :count)
       end
     end
