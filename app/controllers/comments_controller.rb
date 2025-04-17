@@ -1,6 +1,17 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  before_action :set_comentable, only: %i[create]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
+
+  def create
+    @comment = @comentable.comments.new(comment_params)
+    @comment.save
+
+    respond_to do |format|
+      format.html { redirect_to redirect_path_for(@comentable), notice: t('.success') }
+      format.turbo_stream
+    end
+  end
 
   def edit; end
 
@@ -36,6 +47,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def set_comentable
+    @comentable = params.dig(:comment, :comentable_type).safe_constantize.find_by(id: params.dig(:comment, :comentable_id))
+  end
+
   def redirect_path_for(comentable)
     case comentable
     when Product
@@ -45,5 +60,9 @@ class CommentsController < ApplicationController
     else
       root_path
     end
+  end
+
+  def comment_params
+    params.require(:comment).permit(:message, :comentable_id, :comentable_type)
   end
 end

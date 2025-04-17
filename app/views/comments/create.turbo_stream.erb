@@ -1,0 +1,6 @@
+<% if @comment.persisted? %>
+  <%= turbo_stream.update 'comments', '' if @comentable.comments.one? %>
+  <%= turbo_stream.prepend 'comments', partial: 'comments/comment', locals: { comment: @comment } %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

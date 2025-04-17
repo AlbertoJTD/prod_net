@@ -31,7 +31,10 @@
         <% end %>
       <% end %>
       
-      <%= form_with model: @product.comments.new, url: comments_product_path(@product), turbo_frame: 'comments' do |f| %>
+      <%= form_with model: @product.comments.new, url: product_comments_path(@product), turbo_frame: 'comments' do |f| %>
+        <%= f.hidden_field :comentable_id, value: @product.id %>
+        <%= f.hidden_field :comentable_type, value: @product.class.name %>
+
         <%= f.text_area :message, class: 'w-full p-2 border border-gray-300 rounded-md' %>
         <%= f.submit t('shared.comments.create'), class: 'bg-blue-500 text-white px-4 py-2 rounded-md' %>
       <% end %>

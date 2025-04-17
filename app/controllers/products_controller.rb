@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy comments]
+  before_action :set_product, only: %i[show edit update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
@@ -57,20 +57,6 @@ class ProductsController < ApplicationController
       flash.now[:success] = t('.success')
       format.html { redirect_to products_path }
       format.turbo_stream
-    end
-  end
-
-  def comments
-    @comment = @product.comments.new(comment_params)
-
-    if @comment.save
-      respond_to do |format|
-        flash.now[:success] = t('.success')
-        format.html { redirect_to product_path(@product) }
-        format.turbo_stream
-      end
-    else
-      render :show, status: :unprocessable_entity
     end
   end
 
