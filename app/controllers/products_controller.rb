@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   def index
+    # WelcomeJob.perform_later
     @pagy, @products = pagy_countless(Product.popular.visible, limit: 15)
   end
 

@@ -52,6 +52,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'mailtrap'
 end
 
 group :development do
@@ -83,3 +84,5 @@ gem "inline_svg", "~> 1.10"
 gem "friendly_id", "~> 5.5"
 gem "pagy", "~> 9.3"
 gem "sidekiq", "~> 8.0"
+gem "redis", "~> 5.4"
+gem 'dotenv-rails'
