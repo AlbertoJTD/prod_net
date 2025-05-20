@@ -1,6 +1,11 @@
 name: First workflow
 
-on: [push]
+# on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+      - dockerize-app
 
 jobs:
   hello:
