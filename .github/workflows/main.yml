@@ -1,0 +1,12 @@
+name: Test Workflow
+
+on: [push]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ls
+        run: |
+          echo "Hello from main.yml workflow" >> myfile.txt
+          cat myfile.txt
