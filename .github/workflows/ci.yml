@@ -6,6 +6,12 @@ jobs:
   rails-tests:
     runs-on: ubuntu-latest
 
+    env:
+      POSTGRES_DB: prod_net_test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: 127.0.0.1
+
     services:
       postgresql:
         image: postgres
@@ -14,6 +20,11 @@ jobs:
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - name: Checkout
