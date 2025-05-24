@@ -49,6 +49,9 @@ jobs:
           rails db:drop
           rails db:create
           rails db:migrate
+      
+      - name: Precompile Assets
+        run: bin/rails assets:precompile
 
       - name: Run tests
         run: |
