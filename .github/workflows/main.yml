@@ -5,11 +5,10 @@ on: [push]
 jobs:
   test-build:
     runs-on: ubuntu-latest
+
+    env:
+      MY_VAR: My variable
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-      
-      - name: My custom action
-        uses: ./.github/actions/my-action
-        with:
-          message: "Hey there!"
+      - name: Print env variable
+        run: echo "Value $MY_VAR"
